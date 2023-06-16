@@ -23,7 +23,7 @@
 #define PURSUIT_NODE_NAME "PursuitNode"
 #define PARAMS_FREQUENCY "frequency"
 #define PARAMS_TOPIC_WAYPOINT "wp_topic"
-
+#define PARAMS_SPEED "speed"
 
 class PursuitNode : public rclcpp::Node{
 	public: 
@@ -32,11 +32,12 @@ class PursuitNode : public rclcpp::Node{
 		
 	 	double g_Speed();
 		int g_Frequency();
-        int s_Speed(double speed);
-		int s_Frequency(int frequency);
-
+        void s_Speed(double speed);
+		void s_Frequency(int frequency);
+		std::string g_WaypointTopic();
 	protected:
 		double m_speed=0.0;
 		int m_frequency=0; 
+		std::string m_waypoint_topic;
 };
 #endif // PURSUIT_NODE_H_

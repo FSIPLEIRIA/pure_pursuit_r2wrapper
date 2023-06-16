@@ -5,7 +5,7 @@
   <version>0.0.0</version>
   <description>A ROS2 package designed to interface with the pure pursuit algorithm core lib</description>
   <maintainer email="joaovieira@ieee.org">João Vieira</maintainer>
-  
+  <license>TODO</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   
