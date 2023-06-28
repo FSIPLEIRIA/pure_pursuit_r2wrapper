@@ -7,6 +7,9 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+# TODO add cmake_prefix_path... for find_package(path_tracker REQUIRED)
+
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)

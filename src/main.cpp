@@ -11,12 +11,11 @@
 #include <rclcpp/node.hpp>
 #include <rclcpp/rclcpp.hpp>
 
-#include "pursuit_node.h"
 //include odometry message
 int main(int argc, char ** argv){
 	rclcpp::init(argc, argv);
 	rclcpp::spin(std::make_shared<PursuitNode>());
-	
+
 	rclcpp::shutdown();
 
 	return 0;

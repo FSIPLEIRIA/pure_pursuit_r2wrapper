@@ -10,6 +10,7 @@
 #define PURSUIT_NODE_H_
 #include <geometry_msgs/msg/detail/pose__struct.hpp>
 #include <geometry_msgs/msg/detail/pose2_d__struct.hpp>
+
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/node.hpp>
 #include <rclcpp/executors.hpp>
@@ -20,6 +21,9 @@
 #include <lart_common/Point.h>
 #include <lart_common/Path.h>
 
+#include <path_tracker/PathTracker.h>
+#include <path_tracker/Math.h>
+
 #define PURSUIT_NODE_NAME "PursuitNode"
 #define PARAMS_FREQUENCY "frequency"
 #define PARAMS_TOPIC_WAYPOINT "wp_topic"
@@ -29,15 +33,19 @@ class PursuitNode : public rclcpp::Node{
 	public: 
 		PursuitNode();
 		virtual ~PursuitNode() = default;
-		
 	 	double g_Speed();
 		int g_Frequency();
         void s_Speed(double speed);
 		void s_Frequency(int frequency);
 		std::string g_WaypointTopic();
 	protected:
+		//publisher 
+		rclcpp::Publisher<geometry_msgs::msg::Pose2D>::SharedPtr m_waypoint_publisher;
+		void callee_PointCallback(lart_common::Point incoming_point); 
 		double m_speed=0.0;
 		int m_frequency=0; 
 		std::string m_waypoint_topic;
+		
+		path_tracker::PathTracker m_path_tracker;
 };
 #endif // PURSUIT_NODE_H_
