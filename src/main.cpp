@@ -10,7 +10,7 @@
 #include <rclcpp/executors.hpp>
 #include <rclcpp/node.hpp>
 #include <rclcpp/rclcpp.hpp>
-
+#include "pursuit_node.h"
 //include odometry message
 int main(int argc, char ** argv){
 	rclcpp::init(argc, argv);

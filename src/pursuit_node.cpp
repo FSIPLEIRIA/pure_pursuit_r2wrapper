@@ -1,4 +1,5 @@
 #include "pursuit_node.h"
+#include <string>
 
 PursuitNode::PursuitNode(): Node(PURSUIT_NODE_NAME){
 	this->declare_parameter(PARAMS_FREQUENCY, 10);
@@ -7,7 +8,7 @@ PursuitNode::PursuitNode(): Node(PURSUIT_NODE_NAME){
 	this->g_WaypointTopic(); 
 	//declare publisher
     // TODO: perform macro migration to core library so the whole pipeline is flexible
-	m_waypoint_publisher = this->create_publisher<geometry_msgs::msg::Pose2D>(m_waypoint_topic, 10);
+	//auto m_publisher = this->create_publisher<std::string>(m_waypoint_topic, 10);
 	m_path_tracker.setRate(m_frequency);
 	m_path_tracker.setSpeed(m_speed);
 	
@@ -15,10 +16,10 @@ PursuitNode::PursuitNode(): Node(PURSUIT_NODE_NAME){
 }
 void PursuitNode::callee_PointCallback(lart_common::Point point){
 	geometry_msgs::msg::Pose2D pose2d;
-	pose2d.x = point.x;
-	pose2d.y = point.y;
-	pose2d.theta = point.theta;
-	m_waypoint_publisher->publish(pose2d);
+	pose2d.x = point.getX();
+	pose2d.y = point.getY();
+
+	//m_publisher->publish(pose2d);
 }
 int PursuitNode::g_Frequency(){
 	m_frequency = this->get_parameter(PARAMS_FREQUENCY).as_int();

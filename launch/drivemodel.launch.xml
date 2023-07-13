@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="pure_pursuit_r2wrapper" exec="" name="DriveModelNode">
+		<param from="/home/micron/ros2_ws/src/spac/config/demo_params.yaml" allow_substs="True" />
+	</node>
+
+</launch>
